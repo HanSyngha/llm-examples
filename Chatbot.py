@@ -255,11 +255,11 @@ if prompt := st.chat_input():
         typewriter("🤖 00" + prompt,8)
     else:    
         if prompt in db:
-            typewriter("🤖 올해 당신은" + db[prompt] + "순 입니다!",8)
+            typewriter("🤖 올해 당신은 ⭐" + db[prompt] + "⭐ 순 입니다!",8)
             for names in db:
                 if db[names] == db[prompt]:
-                    if names == db[names] and db[prompt] != "임원":
-                        typewriter(names[2:] + "순장님 ["+ names[:2] + "]",8)
+                    if names[2:] == db[names] and db[prompt] != "임원":
+                        typewriter(names[2:] + " 순장님 ["+ names[:2] + "]",8)
                     else:    
                         typewriter(names[2:] + "["+ names[:2] + "]",8)
         else:
