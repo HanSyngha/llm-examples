@@ -245,6 +245,7 @@ typewriter("🤖 태어난 연도와 이름을 입력해주세요!",8)
 typewriter("🤖 ex) 03홍길동",8)
 
 if prompt := st.chat_input():
+    prompt = prompt.replace(' ','')
     if prompt in db:
         typewriter("🤖 " + db[prompt] + "순 입니다!",8)
         for names in db:
