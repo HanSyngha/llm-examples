@@ -10,15 +10,6 @@ def typewriter(text: str, speed: int):
         container.markdown(curr_full_text)
         time.sleep(1 / speed)
 
-
-def is_integer(n):
-    try:
-        float(n)
-    except ValueError:
-        return False
-    else:
-        return float(n).is_integer()
-
 db = {
 '97김정근':'임원',
 '96한승하':'임원',
@@ -251,48 +242,29 @@ st.title("💬 Pistis GPT")
 st.caption("❤️ 올해 나의 순은 어디?")
 
 typewriter("🤖 태어난 연도와 이름을 입력해주세요!",8)
-typewriter("🤖 생년월일을 모를 경우 이름만 입력해 주세요",8)
-typewriter("🤖 생년월일과 함께 입력해야 순이 검색됩니다",8)
-typewriter("🤖 ex) 03홍길동   or   홍길동",8)
+typewriter("🤖 ex) 03홍길동",8)
 
 if prompt := st.chat_input():
     prompt = prompt.replace(' ','')
-    if is_integer(prompt[:2]):
-        if prompt in db:
-            typewriter("🤖 " + db[prompt] + "순 입니다!",8)
-            for names in db:
-                if db[names] == db[prompt]:
-                    typewriter(names[2:] + "["+ names[:2] + "]",8)
-        else:
-            typewriter("🤖 등록되지 않은 청년입니다😭",8)
-            typewriter("🤖 누락되었을 경우 목사님 혹은 임원들께 문의해주세요!",8)
-            typewriter("🤖 회장: 김정근 (📳010-5239-5267)",8)
-            typewriter("🤖 존재하는 등록 신자",8)
-
-            checkpoint = True
-            for age in range (0,9):
-                if "0" + str(age) + prompt[2:] in db:
-                    typewriter("🤖 " + prompt[2:] + "(0"+ str(age) + ")",8)
-                    checkpoint = False
-            for age in range (10,99):
-                if str(age) + prompt[2:] in db:
-                    typewriter("🤖 " + prompt[2:] + "("+ str(age) + ")",8)
-                    checkpoint = False
-
-            if checkpoint:
-                typewriter("🤖 없음",8)
-
+    if prompt in db:
+        typewriter("🤖 " + db[prompt] + "순 입니다!",8)
+        for names in db:
+            if db[names] == db[prompt]:
+                typewriter(names[2:] + "["+ names[:2] + "]",8)
     else:
-        typewriter("🤖 해당 이름으로 등록된 청년 목록",8)
+        typewriter("🤖 등록되지 않은 청년입니다😭",8)
+        typewriter("🤖 누락되었을 경우 목사님 혹은 임원들께 문의해주세요!",8)
+        typewriter("🤖 회장: 김정근 (📳010-5239-5267)",8)
+        typewriter("🤖 존재하는 등록 신자",8)
 
         checkpoint = True
         for age in range (0,9):
-            if "0" + str(age) + prompt in db:
-                typewriter("🤖 " + prompt + "(0"+ str(age) + ")",8)
+            if "0" + str(age) + prompt[2:] in db:
+                typewriter("🤖 " + prompt[2:] + "(0"+ str(age) + ")",8)
                 checkpoint = False
         for age in range (10,99):
-            if str(age) + prompt in db:
-                typewriter("🤖 " + prompt + "("+ str(age) + ")",8)
+            if str(age) + prompt[2:] in db:
+                typewriter("🤖 " + prompt[2:] + "("+ str(age) + ")",8)
                 checkpoint = False
 
         if checkpoint:
