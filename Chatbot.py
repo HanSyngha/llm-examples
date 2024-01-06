@@ -1,6 +1,5 @@
 import streamlit as st
 import time
-import random
 
 def typewriter(text: str, speed: int):
     tokens = text.split()
@@ -247,26 +246,34 @@ typewriter("🤖 ex) 03홍길동",8)
 
 if prompt := st.chat_input():
     prompt = prompt.replace(' ','')
-    if prompt in db:
-        typewriter("🤖 " + db[prompt] + "순 입니다!",8)
-        for names in db:
-            if db[names] == db[prompt]:
-                typewriter(names[2:] + "["+ names[:2] + "]",8)
-    else:
-        typewriter("🤖 등록되지 않은 청년입니다😭",8)
-        typewriter("🤖 누락되었을 경우 목사님 혹은 임원들께 문의해주세요!",8)
-        typewriter("🤖 회장: 김정근 (📳010-5239-5267)",8)
-        typewriter("🤖 존재하는 등록 신자",8)
 
-        checkpoint = True
-        for age in range (0,9):
-            if "0" + str(age) + prompt[2:] in db:
-                typewriter("🤖 " + prompt[2:] + "(0"+ str(age) + ")",8)
-                checkpoint = False
-        for age in range (10,99):
-            if str(age) + prompt[2:] in db:
-                typewriter("🤖 " + prompt[2:] + "("+ str(age) + ")",8)
-                checkpoint = False
+    try:
+        int(prompt[:2])
 
-        if checkpoint:
-            typewriter("🤖 없음",8)
+    except ValueError:
+        typewriter("🤖 아래와 같이 입력해 보세요",8)
+        typewriter("🤖 00" + prompt,8)
+    else:    
+        if prompt in db:
+            typewriter("🤖 올해 당신은" + db[prompt] + "순 입니다!",8)
+            for names in db:
+                if db[names] == db[prompt]:
+                    typewriter(names[2:] + "["+ names[:2] + "]",8)
+        else:
+            typewriter("🤖 등록되지 않은 청년입니다😭",8)
+            typewriter("🤖 누락되었을 경우 목사님 혹은 임원들께 문의해주세요!",8)
+            typewriter("🤖 회장: 김정근 (📳010-5239-5267)",8)
+            typewriter("🤖 존재하는 등록 신자",8)
+
+            checkpoint = True
+            for age in range (0,9):
+                if "0" + str(age) + prompt[2:] in db:
+                    typewriter("🤖 " + prompt[2:] + "(0"+ str(age) + ")",8)
+                    checkpoint = False
+            for age in range (10,99):
+                if str(age) + prompt[2:] in db:
+                    typewriter("🤖 " + prompt[2:] + "("+ str(age) + ")",8)
+                    checkpoint = False
+
+            if checkpoint:
+                typewriter("🤖 없음",8)
