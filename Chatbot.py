@@ -255,6 +255,16 @@ if prompt := st.chat_input():
         typewriter("🤖 누락되었을 경우 목사님 혹은 임원들께 문의해주세요!",8)
         typewriter("🤖 회장: 김정근 (📳010-5239-5267)",8)
         typewriter("🤖 존재하는 등록 신자",8)
-        for age in range (00,99):
+
+        checkpoint = True
+        for age in range (0,9):
+            if "0" + str(age) + prompt[2:] in db:
+                typewriter("🤖 " + prompt[2:] + "(0"+ str(age) + ")",8)
+                checkpoint = False
+        for age in range (10,99):
             if str(age) + prompt[2:] in db:
-                typewriter(prompt[2:] + "["+ str(age) + "]",8)
+                typewriter("🤖 " + prompt[2:] + "("+ str(age) + ")",8)
+                checkpoint = False
+
+        if checkpoint:
+            typewriter("🤖 없음",8)
