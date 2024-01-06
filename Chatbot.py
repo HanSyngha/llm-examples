@@ -238,7 +238,7 @@ db = {
     '93전현우': '최우빈'
 }
 
-st.title("💬 Pistis GPT")
+st.title("⛪ Pistis GPT")
 st.subheader("❤️ 올해 나의 순은 어디?")
 st.caption("Made By Syngha Han")
 
