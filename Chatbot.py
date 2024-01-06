@@ -239,7 +239,8 @@ db = {
 }
 
 st.title("💬 Pistis GPT")
-st.caption("❤️ 올해 나의 순은 어디?")
+st.subheader("❤️ 올해 나의 순은 어디?")
+st.caption("Made By Syngha Han")
 
 typewriter("🤖 태어난 연도와 이름을 입력해주세요!",8)
 typewriter("🤖 ex) 03홍길동",8)
