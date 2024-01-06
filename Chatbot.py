@@ -251,9 +251,9 @@ if prompt := st.chat_input():
             if db[names] == db[prompt]:
                 typewriter(names[2:] + "["+ names[:2] + "]",8)
     else:
-        typewriter("🤖 등록되지 않은 신자입니다😭",8)
+        typewriter("🤖 등록되지 않은 청년입니다😭",8)
         typewriter("🤖 누락되었을 경우 목사님 혹은 임원들께 문의해주세요!",8)
-        typewriter("🤖 회장: 김정근 (010-5239-5267)",8)
+        typewriter("🤖 회장: 김정근 (📳010-5239-5267)",8)
         typewriter("🤖 존재하는 등록 신자",8)
         for age in range (00,99):
             if str(age) + prompt[2:] in db:
