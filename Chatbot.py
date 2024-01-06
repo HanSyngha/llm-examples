@@ -35,7 +35,7 @@ db = {
     '97최린': '김은하',
     '96박상우': '김은하',
     '96이성준': '김은하',
-    '95정유정': '김은하'
+    '95정유정': '김은하',
     '98김상정': '김상정',
     '99박주영': '김상정',
     '05김요안나': '김상정',
@@ -255,6 +255,6 @@ if prompt := st.chat_input():
         typewriter("🤖 누락되었을 경우 목사님 혹은 임원들께 문의해주세요!",8)
         typewriter("🤖 회장: 김정근 (010-5239-5267)",8)
         typewriter("🤖 존재하는 등록 신자",8)
-        for age in range (20,40):
+        for age in range (00,99):
             if str(age) + prompt[2:] in db:
                 typewriter(prompt[2:] + "["+ str(age) + "]",8)
